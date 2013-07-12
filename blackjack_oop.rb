@@ -136,7 +136,8 @@ class Blackjack
 
   def get_name
     puts "What's your name?"
-    player.name = gets.chomp.capitalize!
+    player.name = gets.chomp
+    player.name.capitalize!
     puts "Ok #{player.name}, let's play blackjack!"
     puts ''
   end
@@ -163,6 +164,11 @@ class Blackjack
     while player.total < 21
       puts "Would you like to hit or stay?"
       response = gets.chomp
+
+      if response != "hit" && response != "stay"
+        puts "plese type \"hit\" or \"stay.\""
+        next
+      end
 
       if response == 'stay'
         puts "You have chosen to stay with #{player.total}."
